@@ -1,0 +1,24 @@
+.game {
+    background-color: #ced9e0;
+    border-radius: 20px;
+
+    width: 400px;
+    height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.winGame {
+    background: linear-gradient(crimson, gold, yellowgreen, teal, crimson);
+    background-position: 0 0;
+    animation: background 5000ms infinite alternate;
+}
+
+@keyframes background {
+    100% {
+        background-position: 0 2000px;
+    }
+}

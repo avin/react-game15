@@ -1,0 +1,14 @@
+.bar {
+    font-size: 40px;
+    font-weight: bold;
+    color: #db3737;
+    animation: blinker 1s linear infinite;
+    text-shadow: 0 0 5px #ff7373;
+    margin-bottom: 20px;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0.5;
+    }
+}

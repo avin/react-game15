@@ -1,0 +1,42 @@
+.panel {
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.shuffleButton {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: #538fbe;
+    padding: 10px 35px;
+    font-size: 24px;
+    border: 1px solid #2d6898;
+    background-image: linear-gradient(to top, #137cbd 0%, #2b95d6 100%);
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(73, 132, 180)),
+        color-stop(1, rgb(97, 155, 203))
+    );
+    border-radius: 5px;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 0 #2b638f, 0 3px 15px #0e5a8a, inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 0 3px rgba(255, 255, 255, 0.5);
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+        background-image: linear-gradient(to top, rgb(79, 142, 191) 0%, rgb(102, 166, 214) 100%);
+    }
+
+    &:active {
+        box-shadow: 0 2px 0 #2b638f, 0 1px 6px #0e5a8a, inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 0 3px rgba(255, 255, 255, 0.5);
+        background-image: linear-gradient(to top, darken(#137cbd, 5%) 0%, darken(#2b95d6, 5%) 100%);
+
+        transform: translate(0, 2px);
+    }
+}
