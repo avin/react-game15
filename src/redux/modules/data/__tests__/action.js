@@ -1,11 +1,12 @@
-import * as Immutable from 'immutable';
 import { checkIsWon } from '../actions';
 import { generateWinChips } from '../../../../utils/data';
 
 describe('checkIsWon', () => {
     test('isOk!', () => {
         let chips = generateWinChips();
+        expect(checkIsWon(chips)).toBe(true);
 
+        chips = generateWinChips(true);
         expect(checkIsWon(chips)).toBe(true);
 
         // Меняем местами фишки

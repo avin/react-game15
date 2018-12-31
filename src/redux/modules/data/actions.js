@@ -4,6 +4,9 @@ import * as Immutable from 'immutable';
 import { SET_CHIPS, SET_IS_WON } from './actionTypes';
 import { generateWinChips } from '../../../utils/data';
 
+const winChips1 = generateWinChips();
+const winChips2 = generateWinChips(true);
+
 /**
  * Выставить положения фишек
  * @param chips
@@ -20,18 +23,7 @@ export function setChips(chips) {
  * @param chips
  */
 export function checkIsWon(chips) {
-    let won = true;
-
-    chips.forEach((position, value) => {
-        if (won) {
-            if (value !== 0) {
-                const chipOnWinPlace = value === position.get('y') * 4 + position.get('x');
-                won = won && chipOnWinPlace;
-            }
-        }
-    });
-
-    return won;
+    return !!(chips.equals(winChips1) || chips.equals(winChips2));
 }
 
 /**
@@ -89,9 +81,7 @@ export function moveChip(chipValue) {
         }
 
         // Определяем не завершилась ли игра победой?
-        if (checkIsWon(chips)) {
-            dispatch(setIsWon(true));
-        }
+        dispatch(setIsWon(checkIsWon(chips)));
     };
 }
 
@@ -112,7 +102,7 @@ export function setIsWon(value) {
  */
 export function makeWin() {
     return (dispatch, getState) => {
-        const chips = generateWinChips();
+        const chips = generateWinChips(true);
         dispatch(setChips(chips));
         dispatch(setIsWon(true));
     };
