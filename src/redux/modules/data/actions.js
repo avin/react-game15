@@ -2,7 +2,7 @@ import range from 'lodash/range';
 import shuffle from 'lodash/shuffle';
 import * as Immutable from 'immutable';
 import { SET_CHIPS, SET_IS_WON } from './actionTypes';
-import { generateWinChips } from '../../../utils/data';
+import { checkGameIsSolvable, generateWinChips } from '../../../utils/data';
 
 const winChips1 = generateWinChips();
 const winChips2 = generateWinChips(true);
@@ -50,7 +50,7 @@ export function shuffleChips() {
         let chips;
         do {
             chips = shuffleTask();
-        } while (checkIsWon(chips));
+        } while (checkIsWon(chips) || !checkGameIsSolvable(chips));
 
         dispatch(setChips(chips));
         dispatch(setIsWon(false));
