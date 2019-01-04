@@ -1,6 +1,16 @@
 import * as Immutable from 'immutable';
 import { checkGameIsSolvable, generateWinChips } from '../data';
 
+const arrToChipsMap = arr => {
+    let chips = new Immutable.Map();
+    arr.forEach((row, y) => {
+        row.forEach((value, x) => {
+            chips = chips.set(value, new Immutable.Map({ x, y }));
+        });
+    });
+    return chips;
+};
+
 describe('checkGameIsSolvable', () => {
     test('check solvable', () => {
         // Делаем решаемое положение
@@ -14,24 +24,15 @@ describe('checkGameIsSolvable', () => {
 
     test('check not solvable classic', () => {
         // Делаем классическое нерешаемое положение
-        let chips = new Immutable.Map();
-        [[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,15,14,0]].forEach((row, y) => {
-            row.forEach((value, x) => {
-                chips = chips.set(value, new Immutable.Map({ x, y }));
-            });
-        });
+        const chips = arrToChipsMap([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 15, 14, 0]]);
 
         expect(checkGameIsSolvable(chips)).toBe(false);
     });
 
     test('check not solvable 1', () => {
         // Делаем нерешаемое положение (обыденный случай)
-        let chips = new Immutable.Map();
-        [[3, 9, 1, 15], [14, 11, 4, 6], [13, 0, 10, 12], [2, 7, 8, 5]].forEach((row, y) => {
-            row.forEach((value, x) => {
-                chips = chips.set(value, new Immutable.Map({ x, y }));
-            });
-        });
+
+        const chips = arrToChipsMap([[3, 9, 1, 15], [14, 11, 4, 6], [13, 0, 10, 12], [2, 7, 8, 5]]);
 
         expect(checkGameIsSolvable(chips)).toBe(false);
     });

@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
-    "flexboxgrid": "^6.3.1",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
@@ -15,17 +14,29 @@
     "react-redux": "^6.0.0",
     "react-scripts": "2.1.2",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "prettier": "prettier-eslint --write \"src/**/*.{js,json,css}\"",
+    "lint": "eslint src/**/*.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**/*.{js,json,css,md}": [
+        "prettier-eslint --write",
+        "git add"
+      ],
+      "src/**/*.js": "eslint --max-warnings 0"
+    },
+    "concurrent": false
   },
   "browserslist": [
     ">0.2%",

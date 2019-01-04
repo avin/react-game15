@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import configureStore from './redux/store';
 import Root from './components/Root/Root';
 import './styles/index.scss';
-import * as serviceWorker from './serviceWorker';
 import { shuffleChips } from './redux/modules/data/actions';
+import * as serviceWorker from './serviceWorker';
 
 // Инициализирует redux-store
 const store = configureStore();
@@ -22,7 +22,4 @@ if (module.hot) {
     });
 }
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
