@@ -8,6 +8,14 @@
 
 [![Preview](./assets/preview.png)](https://avin.github.io/react-game15)
 
+## Another games
+
+Check my another React+Redux games:
+
+* [Tetris](https://github.com/avin/react-game-tetris)
+* [The Game of Life](https://github.com/avin/react-game-life)
+* [Snake](https://github.com/avin/react-game-snake)
+
 ## License
 
 MIT © [avin](https://github.com/avin)
